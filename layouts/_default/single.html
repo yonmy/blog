@@ -1,0 +1,18 @@
+{{ define "main" }}
+<article>
+  <header class="post-header">
+    <h1>{{ .Title }}</h1>
+    <p class="meta">
+      <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006년 1월 2일" }}</time>
+      <span class="sep">·</span>{{ .ReadingTime }}분
+      {{ range .GetTerms "categories" }}<a class="cat" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>{{ end }}
+    </p>
+  </header>
+  <div class="content">{{ .Content }}</div>
+  {{ with .GetTerms "tags" }}<p class="tags">{{ range . }}<a href="{{ .RelPermalink }}">#{{ .LinkTitle }}</a>{{ end }}</p>{{ end }}
+  <nav class="post-nav">
+    {{ with .NextInSection }}<a class="prev" href="{{ .RelPermalink }}"><small>이전 글</small>{{ .Title }}</a>{{ end }}
+    {{ with .PrevInSection }}<a class="next" href="{{ .RelPermalink }}"><small>다음 글</small>{{ .Title }}</a>{{ end }}
+  </nav>
+</article>
+{{ end }}

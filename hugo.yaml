@@ -1,0 +1,21 @@
+baseURL: https://yonmy.com/
+locale: ko-KR
+title: yonmy
+timeZone: Asia/Seoul
+enableRobotsTXT: true
+taxonomies:
+  category: categories
+  tag: tags
+permalinks:
+  posts: /archives/:contentbasename/
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+  highlight:
+    style: github
+    noClasses: false
+    lineNos: false
+params:
+  description: C++ 개발 블로그
+capitalizeListTitles: false

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ if not .IsHome }}{{ .Title }} · {{ end }}{{ .Site.Title }}</title>
+<meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
+<link rel="stylesheet" href="{{ "css/syntax.css" | relURL }}">
+{{ with .OutputFormats.Get "rss" }}<link rel="alternate" type="application/rss+xml" href="{{ .Permalink }}" title="{{ $.Site.Title }}">{{ end }}
+</head>
+<body>
+<header class="site-header">
+  <a class="site-title" href="{{ .Site.Home.RelPermalink }}">{{ .Site.Title }}</a>
+  <nav><a href="{{ "categories/" | relURL }}">Categories</a> <a href="{{ "tags/" | relURL }}">Tags</a> <a href="https://github.com/yonmy">GitHub</a> <a href="{{ "index.xml" | relURL }}">RSS</a></nav>
+</header>
+<main>{{ block "main" . }}{{ end }}</main>
+<footer class="site-footer">© {{ now.Year }} yonmy</footer>
+</body>
+</html>
